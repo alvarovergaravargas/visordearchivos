@@ -10,10 +10,11 @@ This spec defines an end‑to‑end pipeline that accepts **[brand, product, cou
 2. **Product Category Resolver (PCR)** → return **search‑term‑style product category** popular in the country.
 3. **Competitor Resolver (CR)** → return two **mostly compared** competitors (Brand + Product) in the country.
 4. **Category Topics Builder (CTB)** → generate **100** topics for the category (country + last month) → **embed → cluster → top‑5** with **Interest Share**.
-5. **Category Mention Matrix (CMM)** → expected **mention rate** between the **top‑5 category topics** and **{product, comp1, comp2, Other}** using **semantic affinity + response likelihood (logprob)** fusion.
-6. **Product Topics Builder (PTB)** → generate **100** topics for {product or comps} → **embed → cluster → top‑5** with **Interest Share**.
-7. **Cross Mention Matrix (XMM)** *(optional)* → re‑estimate mention rates using product‑side prompts; **5 rows** (one per category top topic) for stability/triangulation.
-8. **Assembler** → final JSON.
+5. Chatgpt debe darle el nombre a cada cluster.
+6. **Category Mention Matrix (CMM)** → expected **mention rate** between the **top‑5 category topics** and **{product, comp1, comp2, Other}** using **semantic affinity + response likelihood (logprob)** fusion.
+7. **Product Topics Builder (PTB)** → generate **100** topics for {product or comps} → **embed → cluster → top‑5** with **Interest Share**.
+8. **Cross Mention Matrix (XMM)** *(optional)* → re‑estimate mention rates using product‑side prompts; **5 rows** (one per category top topic) for stability/triangulation.
+9. **Assembler** → final JSON.
 
 Caching: PCR, CR, and the 100‑topic lists cache for 24h per `[country, category/product]`.
 
